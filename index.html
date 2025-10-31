@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Home Page Oficial - Bicho</title>
+  <style>
+.texto-animado {
+  display: inline-block;
+  margin-top: 5px; /* Da un poco de espacio desde el logo */
+  font-size: 2em;
+  font-weight: bold;
+  color: #fff8f0;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
+  white-space: nowrap;
+  animation: deslizarTexto 6s ease-in-out infinite;
+  position: relative;
+}
+
+
+@keyframes deslizarTexto {
+  0% {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+  20% {
+    opacity: 1;
+    transform: translateX(0%);
+  }
+  80% {
+    opacity: 1;
+    transform: translateX(0%);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+}
+
+.frase-container {
+  text-align: center;
+  margin-top: 10px;
+  height: 60px; /* Aumenta la altura para que el texto quepa */
+  overflow: hidden;
+  position: relative;
+}
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #fff8f0;
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
+    header, .menu, .combo, .contacto, footer {
+      padding: 20px;
+    }
+    header {
+      background-color: #8B0000;
+      color: white;
+      text-align: center;
+    }
+    .menu {
+      background-color: #fbe3d3;
+      border-radius: 10px;
+    }
+    .menu h2 {
+      color: #8B0000;
+    }
+    .galeria {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      padding: 20px;
+    }
+    .galeria img {
+      width: 100%;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+    .galeria img:hover {
+      transform: scale(1.05);
+    }
+    .lightbox {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.8);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 999;
+    }
+    .lightbox img {
+      max-width: 90%;
+      max-height: 80%;
+      border-radius: 10px;
+    }
+    .lightbox:target {
+      display: flex;
+    }
+    .combo {
+      background-color: #fff0e0;
+      border-radius: 10px;
+    }
+    .combo h2 {
+      color: #8B0000;
+    }
+    .combo form {
+      font-size: 16px;
+    }
+    .combo button {
+      background-color: #8B0000;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .combo button:hover {
+      background-color: #a30000;
+    }
+    .cantidad {
+      display: none;
+      margin-left: 10px;
+      width: 60px;
+    }
+    .contacto {
+      background-color: #ffe4c4;
+      border-radius: 10px;
+    }
+    footer {
+      text-align: center;
+      background-color: #8B0000;
+      color: white;
+    }
+
+    @media (max-width: 600px) {
+      .galeria {
+        grid-template-columns: 1fr;
+      }
+      .combo form label,
+      .combo form input,
+      .combo form select {
+        display: block;
+        width: 100%;
+        margin-bottom: 10px;
+      }
+      .combo form .cantidad {
+        width: 100%;
+        margin-left: 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div style="width: 300px; height: 200px;">
+    <h1>
+      <a href="#img1">
+        <img src="img/Logo_marca.png" alt="Logo Bicho" style="width: 100%; height: auto; border-radius: 20px;">
+      </a>
+    </h1>
+  </div>
+<div class="frase-container">
+ 	<p id="frase-animada" class="texto-animado">¡Sabor que conecta el corazón!</p>
+</div>
+</header>
+
+  <section class="menu">
+    <h2>Menú</h2>
+    <ul>
+      <li>Anticucho de Corazón – S/ 3.5</li>
+      <li>Pan con Chorizo – S/ 3.5</li>
+      <li>Palito de Chorizo – S/ 2</li>
+      <li>Palito de Hotdog – S/ 1</li>
+    </ul>
+  </section>
+
+  <section class="galeria">
+    <a href="#img1"><img src="img/Anticucho.png" alt="Anticucho de corazón"></a>
+    <a href="#img2"><img src="img/Pan-Chorizo.png" alt="Pan con chorizo"></a>
+    <a href="#img3"><img src="img/Palito-Chorizo.png" alt="Palito de chorizo"></a>
+    <a href="#img4"><img src="img/Palito-Hotdog.png" alt="Palito de hotdog"></a>
+  </section>
+
+  <div id="img1" class="lightbox" onclick="location.href='#'"><img src="img/Anticucho.png" alt="Anticucho de corazón"></div>
+  <div id="img2" class="lightbox" onclick="location.href='#'"><img src="img/Pan-Chorizo.png" alt="Pan con chorizo"></div>
+  <div id="img3" class="lightbox" onclick="location.href='#'"><img src="img/Palito-Chorizo.png" alt="Palito de chorizo"></div>
+  <div id="img4" class="lightbox" onclick="location.href='#'"><img src="img/Palito-Hotdog.png" alt="Palito de hotdog"></div>
+
+  <section class="combo">
+    <h2>Arma tu combo</h2>
+    <form id="pedido-form">
+      <label><strong>Elige tus productos:</strong></label><br>
+      <input type="checkbox" id="check-anticucho">
+      <label for="check-anticucho">Anticucho de Corazón</label>
+      <input type="number" id="cant-anticucho" class="cantidad" min="1" value="1"><br>
+
+      <input type="checkbox" id="check-pan">
+      <label for="check-pan">Pan con Chorizo</label>
+      <input type="number" id="cant-pan" class="cantidad" min="1" value="1"><br>
+
+      <input type="checkbox" id="check-palito">
+      <label for="check-palito">Palito de Chorizo</label>
+      <input type="number" id="cant-palito" class="cantidad" min="1" value="1"><br>
+
+      <input type="checkbox" id="check-hotdog">
+      <label for="check-hotdog">Palito de Hotdog</label>
+      <input type="number" id="cant-hotdog" class="cantidad" min="1" value="1"><br><br>
+
+      <label><strong>Tipo de entrega:</strong></label><br>
+      <select id="entrega">
+        <option value="Recojo en local">Recojo en local</option>
+        <option value="Delivery">Delivery</option>
+      </select><br><br>
+
+      <label><strong>Forma de pago:</strong></label><br>
+      <select id="pago">
+        <option value="Efectivo">Efectivo</option>
+        <option value="Yape">Yape</option>
+      </select><br><br>
+
+      <label><strong>Elige tus cremas:</strong></label><br>
+      <input type="checkbox" id="mayonesa" name="crema" value="Mayonesa">
+      <label for="mayonesa">Mayonesa</label><br>
+      <input type="checkbox" id="aji" name="crema" value="Ají">
+      <label for="aji">Ají</label><br>
+      <input type="checkbox" id="salsa-verde" name="crema" value="Salsa Verde">
+      <label for="salsa-verde">Salsa Verde</label><br>
+      <input type="checkbox" id="ketchup" name="crema" value="Ketchup">
+      <label for="ketchup">Ketchup</label><br><br>
+
+      <button type="submit">Enviar pedido</button>
+    </form>
+  </section>
+
+  <section class="contacto">
+    <h2>Contacto</h2>
+    <p>📞 Teléfono: <strong>982 206 641</strong></p>
+    <p>📍 Dirección: <strong>Calle Carlos Philips 235, Chiclayo, Lambayeque</strong></p>
+    <p><a href="https://wa.me/51982206641" target="_blank">Haz tu pedido por WhatsApp</a></p>
+  </section>
+
+  <footer>
+    📞 982 206 641 — 📍 Calle Carlos Philips 235, Chiclayo, Lambayeque
+  </footer>
+
+    <script>
+    const productos = [
+      { check: "check-anticucho", input: "cant-anticucho", nombre: "Anticucho de Corazón" },
+      { check: "check-pan", input: "cant-pan", nombre: "Pan con Chorizo" },
+      { check: "check-palito", input: "cant-palito", nombre: "Palito de Chorizo" },
+      { check: "check-hotdog", input: "cant-hotdog", nombre: "Palito de Hotdog" }
+    ];
+
+    // Mostrar/ocultar campos de cantidad
+    productos.forEach(p => {
+      const checkbox = document.getElementById(p.check);
+      const input = document.getElementById(p.input);
+      checkbox.addEventListener("change", function () {
+        input.style.display = this.checked ? "inline-block" : "none";
+        if (!this.checked) input.value = "1";
+      });
+    });
+
+    // Enviar pedido por WhatsApp
+    document.getElementById("pedido-form").addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const pedido = [];
+
+      productos.forEach(p => {
+        const checkbox = document.getElementById(p.check);
+        const input = document.getElementById(p.input);
+        const cantidad = parseInt(input.value);
+        if (checkbox.checked && cantidad > 0) {
+          pedido.push(`${cantidad} x ${p.nombre}`);
+        }
+      });
+
+      const cremas = Array.from(document.querySelectorAll('input[name="crema"]:checked'))
+        .map(c => c.value)
+        .join(", ") || "Sin cremas";
+
+      const tipoEntrega = document.getElementById("entrega").value;
+      const formaPago = document.getElementById("pago").value;
+
+      if (pedido.length === 0) {
+        alert("Selecciona al menos un producto para hacer tu pedido.");
+        return;
+      }
+
+      const mensaje = `Hola, quiero pedir:\n${pedido.join("\n")}\nCremas: ${cremas}\nEntrega: ${tipoEntrega}\nPago: ${formaPago}`;
+      const url = `https://wa.me/51982206641?text=${encodeURIComponent(mensaje)}`;
+      window.open(url, "_blank");
+    });
+  </script>
+<script>
+  const frases = [
+    "¡Sabor que conecta el corazón!",
+    "¡Delicioso y artesanal!",
+    "¡Pide por WhatsApp!"
+  ];
+
+  let index = 0;
+
+  window.addEventListener("DOMContentLoaded", () => {
+    const fraseElement = document.getElementById("frase-animada");
+
+    setInterval(() => {
+      index = (index + 1) % frases.length;
+      fraseElement.textContent = frases[index];
+    }, 6000);
+  });
+</script>
+</body>
+</html>
